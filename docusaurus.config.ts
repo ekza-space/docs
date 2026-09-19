@@ -50,7 +50,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Ekza Space',
+      title: 'Ekza Docs',
       logo: {
         alt: 'Ekza Space',
         src: 'img/ekza-mark.svg',
@@ -74,7 +74,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: 'Docs',

@@ -1,70 +1,607 @@
+/* ==========================================================================
+   EKZA DOCS — the "spec sheet" system shared with Ekza Studio
+   --------------------------------------------------------------------------
+   Flat editorial pages for technical reading.
+   - Warm paper and ink in light, near-black and bone in dark.
+   - Hairline rules separate meaning; no shadows, no blur, no gradients.
+   - One acid-lime accent, used as a FILL paired with ink, never as body text
+     on paper.
+   - Tight display headings, small uppercase mono for labels and machine data.
+   - System font fallbacks only: the docs load no remote fonts.
+   ========================================================================== */
+
 :root {
-  --ifm-color-primary: #0f766e;
-  --ifm-color-primary-dark: #0d6a63;
-  --ifm-color-primary-darker: #0c645d;
-  --ifm-color-primary-darkest: #0a524d;
-  --ifm-color-primary-light: #118279;
-  --ifm-color-primary-lighter: #12887f;
-  --ifm-color-primary-lightest: #15998f;
-  --ifm-background-color: #fbfaf7;
+  --ekza-bg: #f7f6f2;
+  --ekza-surface: #ffffff;
+  --ekza-surface-2: #f0efe9;
+  --ekza-line: #d8d5cc;
+  --ekza-line-strong: #18181b;
+  --ekza-text: #57554f;
+  --ekza-ink: #121211;
+  --ekza-accent: #cdf028;
+  --ekza-accent-ink: #0e0e0c;
+  --ekza-accent-line: #7a9608;
+  --ekza-danger: #b71a22;
+  --ekza-warning: #a55c08;
+  --ekza-success: #157438;
+
+  --ekza-display: "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ekza-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Infima */
+  --ifm-color-primary: #121211;
+  --ifm-color-primary-dark: #000000;
+  --ifm-color-primary-darker: #000000;
+  --ifm-color-primary-darkest: #000000;
+  --ifm-color-primary-light: #2a2a28;
+  --ifm-color-primary-lighter: #3a3a37;
+  --ifm-color-primary-lightest: #57554f;
+  --ifm-background-color: var(--ekza-bg);
+  --ifm-background-surface-color: var(--ekza-surface);
+  --ifm-font-color-base: var(--ekza-text);
+  --ifm-heading-color: var(--ekza-ink);
   --ifm-font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ifm-heading-font-weight: 800;
-  --ifm-navbar-background-color: rgba(251, 250, 247, 0.92);
-  --ifm-navbar-link-color: #172322;
-  --ifm-footer-background-color: #172322;
-  --ifm-code-font-size: 95%;
-  --ifm-global-radius: 8px;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-monospace: var(--ekza-mono);
+  --ifm-heading-font-family: var(--ekza-display);
+  --ifm-heading-font-weight: 700;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+  --ifm-global-radius: 2px;
+  --ifm-global-shadow-lw: none;
+  --ifm-global-shadow-md: none;
+  --ifm-global-shadow-tl: none;
+  --ifm-navbar-background-color: var(--ekza-bg);
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-height: 3.6rem;
+  --ifm-navbar-link-color: var(--ekza-text);
+  --ifm-navbar-link-hover-color: var(--ekza-ink);
+  --ifm-menu-color: var(--ekza-text);
+  --ifm-menu-color-active: var(--ekza-ink);
+  --ifm-menu-color-background-active: transparent;
+  --ifm-menu-color-background-hover: var(--ekza-surface-2);
+  --ifm-toc-border-color: var(--ekza-line);
+  --ifm-toc-link-color: var(--ekza-text);
+  --ifm-hr-background-color: var(--ekza-line);
+  --ifm-table-border-color: var(--ekza-line);
+  --ifm-table-stripe-background: transparent;
+  --ifm-table-head-background: transparent;
+  --ifm-table-cell-padding: 0.7rem 0.9rem;
+  --ifm-code-background: var(--ekza-surface-2);
+  --ifm-code-font-size: 0.875em;
+  --ifm-code-padding-horizontal: 0.35em;
+  --ifm-code-border-radius: 2px;
+  --ifm-pre-background: var(--ekza-surface);
+  --ifm-blockquote-border-color: var(--ekza-line-strong);
+  --ifm-blockquote-color: var(--ekza-ink);
+  --ifm-link-color: var(--ekza-ink);
+  --ifm-link-hover-color: var(--ekza-ink);
+  --ifm-link-decoration: none;
+  --ifm-link-hover-decoration: none;
+  --ifm-footer-background-color: var(--ekza-bg);
+  --ifm-footer-color: var(--ekza-text);
+  --ifm-footer-link-color: var(--ekza-text);
+  --ifm-footer-link-hover-color: var(--ekza-ink);
+  --ifm-footer-title-color: var(--ekza-ink);
+  --ifm-breadcrumb-color-active: var(--ekza-ink);
+  --ifm-breadcrumb-item-background-active: transparent;
+  --docusaurus-highlighted-code-line-bg: rgba(205, 240, 40, 0.28);
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #5bd3c5;
-  --ifm-color-primary-dark: #3ccabb;
-  --ifm-color-primary-darker: #31c1b2;
-  --ifm-color-primary-darkest: #289f93;
-  --ifm-color-primary-light: #7adccf;
-  --ifm-color-primary-lighter: #8be1d6;
-  --ifm-color-primary-lightest: #b9eee7;
-  --ifm-background-color: #101615;
-  --ifm-navbar-background-color: rgba(16, 22, 21, 0.92);
-  --ifm-navbar-link-color: #edf6f4;
-  --ifm-footer-background-color: #0b100f;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ekza-bg: #0a0a0b;
+  --ekza-surface: #131315;
+  --ekza-surface-2: #1b1b1e;
+  --ekza-line: #303035;
+  --ekza-line-strong: #f4f4f2;
+  --ekza-text: #9e9ea5;
+  --ekza-ink: #fafaf8;
+  --ekza-accent: #d2f430;
+  --ekza-accent-ink: #0c0c0a;
+  --ekza-accent-line: #d2f430;
+  --ekza-danger: #f87171;
+  --ekza-warning: #e8a842;
+  --ekza-success: #56d67a;
+
+  --ifm-color-primary: #d2f430;
+  --ifm-color-primary-dark: #c5e81f;
+  --ifm-color-primary-darker: #b9da1c;
+  --ifm-color-primary-darkest: #98b417;
+  --ifm-color-primary-light: #daf654;
+  --ifm-color-primary-lighter: #e0f76d;
+  --ifm-color-primary-lightest: #ecfaa3;
+  --ifm-link-color: var(--ekza-ink);
+  --ifm-link-hover-color: var(--ekza-accent);
+  --docusaurus-highlighted-code-line-bg: rgba(210, 244, 48, 0.16);
 }
 
+html {
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--ekza-accent);
+  color: var(--ekza-accent-ink);
+}
+
+/* --- navbar: flat, one lime rule on top, hairline below ---------------------- */
+
 .navbar {
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(23, 35, 34, 0.1);
+  border-top: 3px solid var(--ekza-accent);
+  border-bottom: 1px solid var(--ekza-line);
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar__brand {
+  gap: 0.6rem;
+}
+
+.navbar__logo {
+  height: 1.75rem;
+  margin-right: 0;
+}
+
+.navbar__title {
+  font-family: var(--ekza-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ekza-ink);
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-top: 1.05rem;
+  padding-bottom: 1.05rem;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar__link--active {
+  color: var(--ekza-ink);
+  border-bottom-color: var(--ekza-accent-line);
+}
+
+.navbar-sidebar,
+.navbar-sidebar__brand {
+  background: var(--ekza-bg);
   box-shadow: none;
 }
 
-.button {
-  border-radius: 8px;
-  font-weight: 800;
+/* --- sidebar ------------------------------------------------------------------ */
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ekza-line) !important;
 }
 
-.button--primary {
-  --ifm-button-background-color: #0f766e;
-  --ifm-button-border-color: #0f766e;
+.menu {
+  padding: 1.25rem 0.75rem !important;
+  font-size: 0.92rem;
 }
 
-.button--secondary {
-  --ifm-button-background-color: #ffffff;
-  --ifm-button-border-color: rgba(23, 35, 34, 0.16);
-  color: #172322;
+.menu__link {
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  padding: 0.4rem 0.75rem;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  border-left-color: var(--ekza-accent-line);
+  background: var(--ekza-surface-2);
+  color: var(--ekza-ink);
+  font-weight: 600;
+}
+
+/* Category headings read as small machine labels, like Studio's eyebrows. */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  font-family: var(--ekza-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ekza-text);
+  border-left-color: transparent !important;
+  background: transparent !important;
+  margin-top: 0.9rem;
+}
+
+.menu__list-item-collapsible {
+  border-radius: 0;
+}
+
+.menu__list-item-collapsible:hover {
+  background: transparent;
+}
+
+.menu__caret:before,
+.menu__link--sublist-caret:after {
+  opacity: 0.45;
+  background-size: 1.1rem 1.1rem;
+}
+
+/* --- reading surface ------------------------------------------------------------ */
+
+.markdown {
+  --ifm-h1-font-size: 2.6rem;
+  --ifm-h2-font-size: 1.55rem;
+  --ifm-h3-font-size: 1.15rem;
 }
 
 .markdown h1,
 .markdown h2,
-.markdown h3 {
-  letter-spacing: 0;
+.markdown h3,
+.markdown h4 {
+  font-family: var(--ekza-display);
+  letter-spacing: -0.02em;
+  color: var(--ekza-ink);
 }
+
+.markdown h1:first-child,
+.markdown > header h1 {
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.5rem;
+}
+
+.markdown h2 {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--ekza-line);
+}
+
+.markdown h3 {
+  margin-top: 2rem;
+}
+
+.markdown strong {
+  color: var(--ekza-ink);
+  font-weight: 600;
+}
+
+.markdown a {
+  text-decoration: underline;
+  text-decoration-color: var(--ekza-accent-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.markdown a:hover {
+  background: var(--ekza-accent);
+  color: var(--ekza-accent-ink);
+  text-decoration-color: transparent;
+}
+
+.hash-link {
+  text-decoration: none !important;
+  background: transparent !important;
+  color: var(--ekza-text) !important;
+}
+
+.markdown li::marker {
+  color: var(--ekza-accent-line);
+}
+
+.markdown hr {
+  height: 1px;
+}
+
+.markdown blockquote {
+  border-left-width: 3px;
+  font-family: var(--ekza-display);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+}
+
+/* --- tables: a spec sheet, not a striped grid ------------------------------------- */
 
 .markdown table {
   display: table;
   width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  border-top: 1px solid var(--ekza-line-strong);
+  border-bottom: 1px solid var(--ekza-line);
 }
 
-.theme-doc-sidebar-container {
-  border-right-color: rgba(23, 35, 34, 0.1) !important;
+.markdown table thead tr {
+  border-bottom: 1px solid var(--ekza-line-strong);
+}
+
+.markdown table th {
+  font-family: var(--ekza-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ekza-text);
+  border: 0;
+}
+
+.markdown table td {
+  border: 0;
+  border-top: 1px solid var(--ekza-line);
+  vertical-align: top;
+}
+
+.markdown table tr {
+  background: transparent !important;
+}
+
+.markdown table td:first-child {
+  color: var(--ekza-ink);
+  font-weight: 500;
+}
+
+.markdown table strong {
+  white-space: nowrap;
+}
+
+/* --- code ----------------------------------------------------------------------- */
+
+.markdown code {
+  border: 1px solid var(--ekza-line);
+  color: var(--ekza-ink);
+  vertical-align: baseline;
+}
+
+.markdown a code {
+  border-color: var(--ekza-accent-line);
+}
+
+.theme-code-block {
+  border: 1px solid var(--ekza-line);
+  border-radius: 2px;
+  box-shadow: none;
+  background: var(--ekza-surface) !important;
+  margin-bottom: 1.5rem;
+}
+
+.theme-code-block pre,
+.theme-code-block code {
+  background: transparent !important;
+  border: 0;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.theme-code-block [class*='codeBlockTitle'] {
+  font-family: var(--ekza-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ekza-line);
+  background: var(--ekza-surface-2);
+}
+
+.clean-btn[class*='copyButton'],
+.theme-code-block button {
+  border-radius: 2px;
+  border: 1px solid var(--ekza-line);
+  background: var(--ekza-bg);
+}
+
+/* --- admonitions: a ruled note, no tinted panels ----------------------------------- */
+
+.theme-admonition,
+.alert {
+  --ifm-alert-background-color: var(--ekza-surface);
+  --ifm-alert-background-color-highlight: transparent;
+  --ifm-alert-foreground-color: var(--ekza-text);
+  --ifm-alert-border-color: var(--ekza-line-strong);
+  --ifm-alert-border-left-width: 3px;
+  border: 1px solid var(--ekza-line);
+  border-left: 3px solid var(--ekza-line-strong);
+  border-radius: 2px;
+  box-shadow: none;
+  color: var(--ekza-text);
+}
+
+.theme-admonition [class*='admonitionHeading'] {
+  font-family: var(--ekza-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--ekza-ink);
+}
+
+.theme-admonition [class*='admonitionIcon'] svg {
+  fill: var(--ekza-ink);
+  height: 1.1em;
+  width: 1.1em;
+}
+
+.theme-admonition-note,
+.theme-admonition-info {
+  border-left-color: var(--ekza-accent-line);
+}
+
+.theme-admonition-tip {
+  border-left-color: var(--ekza-success);
+}
+
+.theme-admonition-warning,
+.theme-admonition-caution {
+  border-left-color: var(--ekza-warning);
+}
+
+.theme-admonition-danger {
+  border-left-color: var(--ekza-danger);
+}
+
+.theme-admonition a {
+  color: var(--ekza-ink);
+}
+
+/* --- page furniture ---------------------------------------------------------------- */
+
+.breadcrumbs__link {
+  font-family: var(--ekza-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.2rem 0.4rem;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: var(--ekza-accent);
+  color: var(--ekza-accent-ink);
+}
+
+.table-of-contents {
+  font-size: 0.82rem;
+  border-left: 1px solid var(--ekza-line);
+}
+
+.table-of-contents__link--active {
+  color: var(--ekza-ink);
+  font-weight: 600;
+  box-shadow: -1px 0 0 0 var(--ekza-accent-line), -3px 0 0 0 var(--ekza-accent-line);
+}
+
+.table-of-contents__link:hover {
+  color: var(--ekza-ink);
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ekza-line);
+  border-radius: 2px;
+  transition: none;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ekza-line-strong);
+  background: var(--ekza-surface);
+}
+
+.pagination-nav__sublabel {
+  font-family: var(--ekza-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pagination-nav__label {
+  font-family: var(--ekza-display);
+  color: var(--ekza-ink);
+}
+
+.theme-doc-footer,
+.theme-last-updated {
+  font-size: 0.8rem;
+}
+
+/* --- buttons: lime fill, ink text -------------------------------------------------- */
+
+.button {
+  border-radius: 2px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.button--primary {
+  --ifm-button-background-color: var(--ekza-accent);
+  --ifm-button-border-color: var(--ekza-accent);
+  --ifm-button-color: var(--ekza-accent-ink);
+  color: var(--ekza-accent-ink);
+}
+
+.button--primary:hover {
+  --ifm-button-background-color: var(--ekza-ink);
+  --ifm-button-border-color: var(--ekza-ink);
+  color: var(--ekza-bg);
+}
+
+.button--secondary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: var(--ekza-line-strong);
+  color: var(--ekza-ink);
+}
+
+/* --- footer: paper, a hairline, small labels ----------------------------------------- */
+
+.footer {
+  border-top: 1px solid var(--ekza-line);
+  padding: 3rem 0 2rem;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: var(--ekza-bg);
+  --ifm-footer-color: var(--ekza-text);
+  --ifm-footer-link-color: var(--ekza-text);
+  --ifm-footer-title-color: var(--ekza-ink);
+}
+
+.footer__title {
+  font-family: var(--ekza-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footer__link-item {
+  font-size: 0.9rem;
+}
+
+.footer__link-item:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ekza-accent-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.footer__copyright {
+  font-family: var(--ekza-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--ekza-line);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+}
+
+/* --- search, toggles, misc ------------------------------------------------------------- */
+
+.clean-btn[class*='toggleButton'] {
+  border-radius: 2px;
+}
+
+.clean-btn[class*='toggleButton']:hover {
+  background: var(--ekza-surface-2);
+}
+
+[class*='backToTopButton'] {
+  border-radius: 2px;
+  box-shadow: none;
+  background: var(--ekza-accent);
+}
+
+details.alert,
+details[class*='details'] {
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+img {
+  border-radius: 2px;
+}
+
+@media (max-width: 996px) {
+  .markdown table {
+    display: block;
+    overflow-x: auto;
+  }
 }
