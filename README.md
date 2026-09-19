@@ -17,3 +17,8 @@ pnpm run typecheck
 - `/Users/wotori/git/ekza/solana-stellar`
 - `/Users/wotori/git/ekza/solana-avatars`
 - `/Users/wotori/git/ekza/solana-ekza-space`
+
+## Deployment
+
+The site is live at <https://docs.ekza.io>. Vercel builds and publishes every push to
+`main`; other branches get a preview deployment. There is no manual deploy step.

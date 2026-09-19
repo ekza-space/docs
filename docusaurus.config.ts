@@ -11,7 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://docs.ekza.space',
+  // The live site. Sitemap, canonical and social links are built from this value.
+  url: 'https://docs.ekza.io',
   baseUrl: '/',
   organizationName: 'wotori-studio',
   projectName: 'ekza-space-docs',
