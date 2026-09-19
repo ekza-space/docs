@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Ekza Space',
-  tagline: 'On-chain ownership for portable 3D assets, avatars, and spaces.',
+  tagline: 'One avatar, many games. Creators stay owners; games approve what enters them.',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -61,8 +61,8 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/protocol/solana-protocol', label: 'Protocol', position: 'left'},
-        {to: '/developers/sdk-overview', label: 'SDK', position: 'left'},
+        {to: '/core-concepts/architecture', label: 'Architecture', position: 'left'},
+        {to: '/developers/game-integration', label: 'Integrate a game', position: 'left'},
         {href: 'https://space.ekza.io', label: 'Space App', position: 'right'},
         {href: 'https://avatar.ekza.io', label: 'Avatar App', position: 'right'},
         {
@@ -79,23 +79,24 @@ const config: Config = {
           title: 'Docs',
           items: [
             {label: 'Introduction', to: '/'},
-            {label: 'Solana Protocol', to: '/protocol/solana-protocol'},
-            {label: 'Metadata Standard', to: '/protocol/metadata-standard'},
+            {label: 'Architecture', to: '/core-concepts/architecture'},
+            {label: 'Asset Lifecycle', to: '/core-concepts/asset-lifecycle'},
           ],
         },
         {
           title: 'Product',
           items: [
-            {label: 'Spaces', to: '/protocol/space-nft'},
-            {label: 'Asset Passport', to: '/protocol/asset-passport'},
+            {label: 'Roadmap', to: '/product/roadmap'},
             {label: 'Creator Royalties', to: '/product/creator-royalties'},
+            {label: 'Solana Layer (optional)', to: '/protocol/solana-protocol'},
           ],
         },
         {
           title: 'Build',
           items: [
-            {label: 'SDK Overview', to: '/developers/sdk-overview'},
             {label: 'Game Integration', to: '/developers/game-integration'},
+            {label: 'Rendition Profiles', to: '/developers/rendition-profiles'},
+            {label: 'SDK Overview', to: '/developers/sdk-overview'},
           ],
         },
       ],

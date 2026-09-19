@@ -5,6 +5,13 @@ description: Recommended metadata and IPFS manifest standard for Ekza assets, av
 
 # Metadata Standard
 
+:::note Optional layer
+This page describes the Solana layer. It keeps working and is frozen for new features.
+Nothing in Ekza's main path requires it: creators publish, games approve and players play
+with an email account. Solana adds public proof of ownership, limited editions and
+trading. See [Architecture](../core-concepts/architecture).
+:::
+
 Ekza stores ownership and compact references on Solana. The actual 3D content,
 preview files, license documents, and compatibility data belong in metadata
 documents addressed by URI.

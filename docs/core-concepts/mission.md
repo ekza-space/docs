@@ -34,7 +34,7 @@ a 3D asset:
 
 1. creation and collaboration;
 2. metadata publication;
-3. on-chain ownership;
+3. ownership, recorded in the registry and optionally on-chain;
 4. license verification;
 5. SDK integration;
 6. marketplace discovery;
@@ -54,7 +54,9 @@ assets into games, and receive ongoing compensation.
 
 Ekza should stay credible and focused:
 
-- Solana-native ownership and licensing are core.
+- A verifiable record of authorship, license and usage is core. An email account is
+  enough to take part; Solana is the optional layer for public proof of ownership,
+  limited editions and trading.
 - 3D assets, avatars, and Spaces are product surfaces.
 - SDKs are the developer layer.
 - Marketplace and royalties are economic layers.

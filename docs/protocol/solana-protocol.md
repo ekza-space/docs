@@ -5,6 +5,13 @@ description: Current Solana protocol implementation across Stellar, Spaces, and 
 
 # Solana Protocol
 
+:::note Optional layer
+This page describes the Solana layer. It keeps working and is frozen for new features.
+Nothing in Ekza's main path requires it: creators publish, games approve and players play
+with an email account. Solana adds public proof of ownership, limited editions and
+trading. See [Architecture](../core-concepts/architecture).
+:::
+
 Ekza Space uses Anchor programs to represent creator collaboration, asset
 ownership, virtual Spaces, avatar identity, and revenue accounting on Solana.
 
@@ -129,14 +136,14 @@ Rich 3D data belongs in IPFS or another content-addressed storage layer.
 Run protocol tests from each repository:
 
 ```bash
-cd /Users/wotori/git/ekza/solana-stellar
+cd solana-stellar
 yarn --cwd sdk build
 anchor test
 
-cd /Users/wotori/git/ekza/solana-ekza-space
+cd solana-ekza-space
 anchor build
 anchor run litesvm
 
-cd /Users/wotori/git/ekza/solana-avatars
+cd solana-avatars
 anchor test
 ```

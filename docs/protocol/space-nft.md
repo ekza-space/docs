@@ -5,6 +5,13 @@ description: NFT-backed virtual Spaces in the solana-ekza-space Anchor program.
 
 # Space NFT
 
+:::note Optional layer
+This page describes the Solana layer. It keeps working and is frozen for new features.
+Nothing in Ekza's main path requires it: creators publish, games approve and players play
+with an email account. Solana adds public proof of ownership, limited editions and
+trading. See [Architecture](../core-concepts/architecture).
+:::
+
 A Space is a virtual room, scene, world, game area, or collaborative creative
 zone represented by a Solana NFT and a PDA with editable settings.
 
@@ -16,7 +23,7 @@ configuration that can point to an IPFS manifest for the actual Space content.
 Repository:
 
 ```text
-/Users/wotori/git/ekza/solana-ekza-space
+solana-ekza-space
 ```
 
 Program:

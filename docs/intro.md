@@ -1,73 +1,68 @@
 ---
 title: Introduction
-description: Ekza Space protocol overview for 3D asset ownership, licensing, Spaces, avatars, SDKs, and creator monetization.
+description: Ekza lets one 3D avatar work in many games while its creator stays its owner. Overview of the registry, Studio, game approval, SDKs and the optional Solana layer.
 slug: /
 ---
 
 # Ekza Space
 
-Ekza Space is a Solana-native 3D asset ownership and licensing platform for
-creators and game developers.
+Ekza is the layer that lets one 3D avatar work in many games, and lets its creator stay
+its owner while it does.
 
-It lets creators publish game-ready avatars, assets, and virtual spaces with
-on-chain ownership, IPFS metadata, portable identity, and future
-royalty/profit-sharing support.
+A creator publishes an avatar once. Each game declares what a file must be for that game;
+Ekza prepares that file, the creator submits it, and an owner of the game approves it. A
+player keeps avatars in an Ekza account and finds them in every game that approved them.
+The main path needs an email account, not a crypto wallet. Solana is an optional layer
+for public proof of ownership, limited editions and trading.
 
 ## Positioning
 
-Ekza Space is building the on-chain ownership layer for portable 3D assets and
-avatars.
-
 Use these descriptions:
 
-- Solana-native 3D asset ownership protocol.
-- On-chain licensing layer for game-ready 3D assets.
 - Portable avatars and 3D assets for games and virtual worlds.
-- 3D creator economy platform with NFT ownership, IPFS metadata, and SDK integration.
-- Collaborative platform for creating, owning, and monetizing 3D avatars, assets, and spaces.
+- One upload, a verified rendition for every game that accepts it.
+- A registry where games publish their requirements and approve what enters them.
+- A creator platform where authorship, license and usage stay attached to the asset.
+- Optional on-chain ownership for limited editions and trading.
 
 Avoid describing Ekza as only:
 
 - a generic metaverse;
 - a JPEG NFT marketplace;
 - an avatar generator;
-- a single game project.
+- a single game project;
+- a blockchain product. A wallet is one way to hold an avatar, not a condition for using
+  Ekza.
 
-Ekza is an infrastructure layer for ownership, licensing, usage, and
-monetization of 3D content.
+Ekza is an infrastructure layer for ownership, licensing, usage and monetization of 3D
+content.
 
-## What This Documentation Covers
+## What the system is made of
 
-The current protocol implementation is split across three Solana codebases.
-
-| Repository | Role |
+| Part | Role |
 | --- | --- |
-| `solana-stellar` | Collaborative asset universes, asset lineage, releases, contributor shares, release vaults, and revenue claims. |
-| `solana-ekza-space` | Numbered Space NFTs with Metaplex metadata and mutable PDA settings. |
-| `solana-avatars` | Avatar profiles, avatar minting, creator fee escrow, and links to finalized Stellar releases. |
+| Registry | Source of truth: accounts, avatars, revisions, rendition profiles, renditions, submissions, libraries, the catalogue games read |
+| Studio | The web interface for creators, curators, game owners and players |
+| Rendition builders | Code owned by each game that turns an upload into that game's file |
+| SDKs | Catalogue, verified download, account connection; Rust/Bevy first |
+| Omoba, Ekza Space, Ekza Mirror | The first three consumers: a multiplayer game, a web world, an iOS AR app |
+| Solana layer | Optional: Spaces as NFTs, on-chain avatar templates, collaborative releases with contributor shares |
 
-These docs turn the implementation into a single product story:
+[Architecture](./core-concepts/architecture) gives the status of every part.
 
-- creators publish assets instead of losing control after export;
-- assets receive passports with metadata, license, author, and usage path;
-- developers integrate assets through SDKs;
-- revenue and royalties can be split between collaborators;
-- Spaces and OMOBA can become showcase applications powered by the same asset layer.
+## Core flow
 
-## Core Flow
+1. A creator uploads a model in Studio and a curator publishes it.
+2. The creator sees what each game needs, and a rendition is built for the games they choose.
+3. The creator submits the rendition; an owner of the game approves it.
+4. A player saves the avatar to their library.
+5. The game reads what it approved, the player connects their account, picks the avatar, and the game server admits it.
 
-1. A creator or studio opens a Universe in `solana-stellar`.
-2. Contributors add typed assets such as concepts, textures, meshes, rigs, animations, scripts, or metadata.
-3. Assets are linked into lineage so final work can point back to upstream work.
-4. An approved asset becomes a Release with a vault and contributor share snapshot.
-5. A Space or avatar can reference that metadata and become a Solana NFT.
-6. Games use SDKs to resolve ownership, metadata, license, and playable asset files.
-
-## First Reads
+## First reads
 
 - [Mission](./core-concepts/mission)
 - [Architecture](./core-concepts/architecture)
-- [Solana Protocol](./protocol/solana-protocol)
-- [Space NFT](./protocol/space-nft)
-- [Asset Passport](./protocol/asset-passport)
-- [SDK Overview](./developers/sdk-overview)
+- [Asset Lifecycle](./core-concepts/asset-lifecycle)
+- [Game Integration](./developers/game-integration)
+- [Rendition Profiles](./developers/rendition-profiles)
+- [Solana Layer](./protocol/solana-protocol)

@@ -5,6 +5,13 @@ description: Ekza 3D Asset Passport concept and mapping to current solana-stella
 
 # Asset Passport
 
+:::note Optional layer
+This page describes the Solana layer. It keeps working and is frozen for new features.
+Nothing in Ekza's main path requires it: creators publish, games approve and players play
+with an email account. Solana adds public proof of ownership, limited editions and
+trading. See [Architecture](../core-concepts/architecture).
+:::
+
 An Asset Passport is the canonical record for a game-ready 3D asset.
 
 It combines on-chain protocol state with off-chain metadata so a game,

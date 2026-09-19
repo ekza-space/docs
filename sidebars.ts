@@ -6,11 +6,24 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Foundation',
-      items: ['core-concepts/mission', 'core-concepts/architecture'],
+      items: [
+        'core-concepts/mission',
+        'core-concepts/architecture',
+        'core-concepts/asset-lifecycle',
+      ],
     },
     {
       type: 'category',
-      label: 'Solana Protocol',
+      label: 'Developers',
+      items: [
+        'developers/game-integration',
+        'developers/rendition-profiles',
+        'developers/sdk-overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Solana Layer (optional)',
       items: [
         'protocol/solana-protocol',
         'protocol/space-nft',
@@ -18,11 +31,6 @@ const sidebars: SidebarsConfig = {
         'protocol/avatar-passport',
         'protocol/metadata-standard',
       ],
-    },
-    {
-      type: 'category',
-      label: 'Developers',
-      items: ['developers/sdk-overview', 'developers/game-integration'],
     },
     {
       type: 'category',

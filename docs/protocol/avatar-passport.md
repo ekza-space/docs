@@ -5,6 +5,18 @@ description: Ekza Avatar Passport concept and mapping to solana-avatars.
 
 # Avatar Passport
 
+:::note Optional layer
+This page describes the Solana layer. It keeps working and is frozen for new features.
+Nothing in Ekza's main path requires it: creators publish, games approve and players play
+with an email account. Solana adds public proof of ownership, limited editions and
+trading. See [Architecture](../core-concepts/architecture).
+:::
+
+In these docs "passport" means the on-chain record of an avatar and the wallet pairing
+service built on it. An avatar published through Studio has no passport of this kind: its
+record lives in the registry under an `ekza:avatar:<uuid>` identifier, and a player reaches
+it through an [account connection](../developers/game-integration), not a wallet.
+
 An Avatar Passport links a user identity, avatar NFT, metadata, and optional
 Stellar release into one portable identity record.
 
@@ -21,7 +33,7 @@ It lets a wallet prove:
 The avatar stack lives in:
 
 ```text
-/Users/wotori/git/ekza/solana-avatars
+solana-avatars
 ```
 
 It has two Anchor programs:

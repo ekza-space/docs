@@ -5,6 +5,14 @@ description: Creator royalties and profit sharing model for Ekza Space assets an
 
 # Creator Royalties
 
+:::note Current state
+Everything published through Ekza Studio is free today, and a player adds an avatar to a
+library with one click. Paid avatars, payment providers, limited editions and resale are
+planned; see the [Roadmap](./roadmap). Where this page says "NFT" or "mint", read it as
+the optional Solana layer: a price and a creator's share are terms of an agreement the
+creator accepts, recorded in the registry, and an on-chain copy is an option on top.
+:::
+
 Ekza Space should help creators keep economic participation after an asset
 leaves the editor.
 

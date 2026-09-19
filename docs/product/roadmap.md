@@ -1,73 +1,63 @@
 ---
 title: Roadmap
-description: Shippable roadmap for Ekza Space protocol, product, SDKs, marketplace, and creator economy.
+description: What Ekza has built, what is next and what comes later - the account-first path to portable avatars, with Solana as the optional ownership layer.
 ---
 
 # Roadmap
 
-The roadmap should keep Ekza focused on shippable slices that support creator
-ownership, portable 3D assets, Solana licensing, SDK integration, and fair
-monetization.
+The roadmap keeps Ekza on shippable slices. The order follows one rule: first prove the
+whole loop with free avatars and no wallet, then add money, then add on-chain ownership
+where it is the right tool.
 
-## Phase 1: Protocol Foundation
+> Published, approved, played: a creator uploads an avatar, a game's owner approves it,
+> a player wears it in a match.
 
-- Finalize `solana-stellar` Universe, Asset, Release, Vault, and Share flows.
-- Keep lineage and release tests strong.
-- Document PDA seeds and account constraints.
-- Keep `solana-ekza-space` minting and settings stable.
-- Keep avatar ownership and hash-policy tests passing.
+## Built
 
-## Phase 2: Asset Passport
+The loop above works end to end in the repositories and on a local stack. The public
+servers have not been redeployed with it yet.
 
-- Define `ekza.asset.passport.v1`.
-- Normalize IPFS hash and URI handling.
-- Add metadata validation tooling.
-- Generate passport pages from on-chain state.
-- Show lineage, license, creator, and release status.
+- **Studio** for creators, curators, game owners and players, with email accounts.
+- **Rendition profiles**: games publish machine-readable requirements; creators see what
+  stops an upload from fitting a game before anything is built.
+- **Game-owned builders**: the registry runs a game's builder and verifies the result
+  itself. Omoba's builder turns a VRM into a GLB with five retargeted animation clips.
+- **Submissions and approval** by the owner of the game, with a 3D preview of the exact
+  file. Approvals count only for the current published revision.
+- **Unified catalogue** `GET /v2/avatars` for games, from both Studio and the on-chain
+  templates, with explicit `free` or `owned` access.
+- **Account library and game connection**: a player saves avatars, connects a game with a
+  short code, and the game lists their library.
+- **Bevy SDK 0.6** with the catalogue, verified install, the slug contract and account
+  connection.
+- **Omoba** admits free approved avatars from its server's own catalogue read, next to
+  shipped and purchased avatars.
+- **Solana layer**: Spaces as NFTs, avatar templates and minting, collaborative releases
+  with lineage and contributor shares, wallet pairing and one-use tickets.
 
-## Phase 3: Space Product Slice
+## Next
 
-- Mint Space NFT.
-- Edit Space settings.
-- Upload Space config metadata.
-- Display public Space page.
-- Connect wallet.
-- Show owner, mint, and metadata URI.
-- Support explicit editors and shared editing state.
+- Redeploy the public registry and Studio.
+- Google sign-in; regional identity providers and regional storage of personal data.
+- Ekza Space and Ekza Mirror on the unified catalogue and the account connection.
+- Persist a game's connection across restarts.
+- Self-service registration of games, profiles and builders.
+- One test that fails whenever a profile document and the game's own validation drift.
 
-## Phase 4: Avatar Passport
+## Later
 
-- Publish avatar metadata.
-- Mint avatar NFTs.
-- Create and update profile.
-- Select owned avatar.
-- Link finalized Stellar releases to avatar collections.
-- Display avatar passport with model preview and license.
-
-## Phase 5: SDK and Game Integration
-
-- Ship a consolidated TypeScript SDK facade.
-- Add ownership and license helpers.
-- Add manifest loaders.
-- Provide examples for web, Bevy, Unity, and Three.js.
-- Use OMOBA as a real showcase integration.
-
-## Phase 6: Marketplace
-
-- Publish assets.
-- Buy or license assets.
-- Show compatibility data.
-- Connect listings to asset passports.
-- Route revenue to release vaults when applicable.
-- Add creator profile and studio profile pages.
-
-## Phase 7: Creator Economy
-
-- Expand revenue sources beyond mint fees.
-- Add license checkout flows.
-- Add royalty and profit-sharing dashboards.
-- Support collaborative world creation.
-- Make asset usage auditable across games and virtual worlds.
+- **Paid avatars.** Payment providers behind one interface, a platform fee, creator
+  payouts. Prices and shares are terms of an agreement the creator accepts, never fields
+  of an avatar.
+- **Limited editions and resale.** Numbered copies, transfers through the platform,
+  creator commission on every resale.
+- **On-chain ownership as an option.** Issue an owned copy as an NFT for public,
+  server-independent proof of a limited edition, and for trading outside Ekza.
+- **Team creation in Studio.** Lineage, contributor shares and releases, brought over
+  from the Solana layer, with trustless revenue splits remaining on-chain.
+- **More engines.** Unity, Unreal and three.js examples on the same HTTP contracts.
+- **Asset types beyond avatars.** Props, skins, effects and Spaces through the same
+  profile and approval mechanism.
 
 ## Pitch Context
 

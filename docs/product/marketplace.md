@@ -5,6 +5,14 @@ description: Marketplace direction for publishing, licensing, and monetizing gam
 
 # Marketplace
 
+:::note Current state
+Everything published through Ekza Studio is free today, and a player adds an avatar to a
+library with one click. Paid avatars, payment providers, limited editions and resale are
+planned; see the [Roadmap](./roadmap). Where this page says "NFT" or "mint", read it as
+the optional Solana layer: a price and a creator's share are terms of an agreement the
+creator accepts, recorded in the registry, and an on-chain copy is an option on top.
+:::
+
 The Ekza marketplace should be a product layer on top of the protocol, not the
 whole project.
 
