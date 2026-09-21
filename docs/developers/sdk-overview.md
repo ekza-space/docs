@@ -14,7 +14,7 @@ needed for that path.
 | Package | For | What it gives a game | Status |
 | --- | --- | --- | --- |
 | `ekza-bevy-sdk` (Rust) | Bevy and any Rust engine (`default-features = false` drops Bevy) | The unified catalogue, a store of approved avatars with offline copy, verified download and install, the slug contract, account connection, wallet pairing and tickets, a Bevy loader | Working, 0.6 |
-| `@ekza/stellar-sdk` (TypeScript) | Web games and apps | Owned-avatar loading and the wallet passport client | Working for the wallet path; the account path is planned |
+| `@ekza/stellar-sdk` (TypeScript) | Web games and apps | Owned-avatar/passport plus a wallet-independent `catalog` entry for v2, Space approvals, verified VRM downloads and account contracts | Wallet path released; catalogue/account entry available on `feature/space-account-migration`, production rollout pending |
 | `@ekza/avatar-renderer` | React / three.js surfaces | One shared GLB/VRM avatar component | Working |
 
 ### Bevy SDK modules

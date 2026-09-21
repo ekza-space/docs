@@ -82,8 +82,11 @@ The contract is deliberately small:
 - no network access, nothing written outside the output directory, output named by its
   content hash so a repeated build is idempotent.
 
-The registry runs a builder with a minimal environment in a scratch directory that
-belongs to one build attempt. Then it verifies the path, the hash and the size and
+Studio runs external processors in a disposable Docker container: no network,
+read-only root filesystem and explicitly mounted code/assets, read-only source,
+resource limits, and one writable directory for the attempt. The runtime image must
+be installed in advance and pinned by digest. Missing isolation configuration fails
+the build; it never falls back to a host process. Then it verifies the path, the hash and the size and
 applies `requirements.rendition` **itself**. A builder is never trusted blindly. A failed
 build records a short reason without file system paths, and the creator can ask again.
 

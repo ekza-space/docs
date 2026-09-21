@@ -46,8 +46,18 @@ GET /v2/avatars?project=omoba&platform=desktop&profile=humanoid-glb-v1
 ```
 
 With `project` you receive only what your game approved for that rendition. The response
-is never cached: a creator, a curator or you can withdraw an avatar at any time, and it
-disappears from the next response together with its file.
+is never cached. A selected approval can be withdrawn, and a curator can unpublish the
+entire avatar. New downloads stop when no active game release authorizes those bytes.
+Publishing an update preserves each game's selected rendition until its own approval.
+
+A Studio outage returns **503**, with `Retry-After`; keep the last complete catalogue.
+Older servers can return a partial 200 with `X-Studio-Status: unavailable`: treat that
+as an error too. Fall back to v1 only when v2 returns 404, never on a dependency outage.
+A healthy empty response is different: it must replace stale approvals.
+
+Without the project filter, an avatar ID can occur in multiple revision records because
+games may have selected different bytes. Keep each record's `origin.revisionId`,
+renditions and `projectSupport` together; never merge approvals by avatar ID alone.
 
 `origin.kind` is `studio` for avatars published through Ekza Studio and `solana` for
 on-chain templates. `access` tells you what proof wearing it needs:
@@ -90,9 +100,10 @@ A minimal server policy:
 - anything else: refuse.
 
 Omoba does this off the game tick: an unknown slug triggers one catalogue read on a
-worker thread, a known avatar is re-checked after five minutes so a withdrawn approval
-stops working, unknown slugs can trigger a read at most every ten seconds, and a registry
-outage keeps what was already approved.
+worker thread. On a new admission a known avatar is re-checked when the five-minute
+catalogue cache has expired. This is not a background replacement of avatars in running
+matches. Unknown slugs can trigger a read at most every ten seconds, and a registry
+outage keeps the last successful catalogue.
 
 ## 4. Connect the player's account (optional)
 

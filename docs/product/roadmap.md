@@ -23,7 +23,7 @@ servers have not been redeployed with it yet.
 - **Game-owned builders**: the registry runs a game's builder and verifies the result
   itself. Omoba's builder turns a VRM into a GLB with five retargeted animation clips.
 - **Submissions and approval** by the owner of the game, with a 3D preview of the exact
-  file. Approvals count only for the current published revision.
+  file. Each game retains its selected published rendition until approving an update.
 - **Unified catalogue** `GET /v2/avatars` for games, from both Studio and the on-chain
   templates, with explicit `free` or `owned` access.
 - **Account library and game connection**: a player saves avatars, connects a game with a
@@ -37,7 +37,10 @@ servers have not been redeployed with it yet.
 
 ## Next
 
-- Redeploy the public registry and Studio.
+- Verify the isolated Blender/USDZ runtime and stage the additive release-selection
+  migration; release the SDK availability fix and repin game consumers.
+- Rehearse the complete flow in the Omoba game window, including update and outage cases.
+- Redeploy the public registry and Studio after release verification.
 - Google sign-in; regional identity providers and regional storage of personal data.
 - Ekza Space and Ekza Mirror on the unified catalogue and the account connection.
 - Persist a game's connection across restarts.

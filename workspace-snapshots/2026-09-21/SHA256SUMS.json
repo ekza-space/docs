@@ -1,0 +1,7 @@
+{
+  "README.md": "436ebcf78dfa59dc16ef7027155903905702130fd83de83c3b9c77aac8abd1c4",
+  "ARCHITECTURE.md": "b1afd74dad7544c4dd0e3fd5c54bb123f286b1a5263e75770f9a1a80e4ae88c4",
+  "PLAN-WEB2-FIRST.md": "950dd9e3002e32e08b586fd05f504b0e84e7ea5d77972cd56c9976c3cca6cada",
+  "adr/0001-web2-first-asset-lifecycle.md": "485d3938e846c416ec50fc1886fdda68d3d040bf99d4d1ba5aff88c7f014b714",
+  "adr/0002-approved-revision-continuity.md": "2a6cbf72639c33f5497d0c8fc03e4215312b5673e75a471ebe3457d5f17df08a"
+}

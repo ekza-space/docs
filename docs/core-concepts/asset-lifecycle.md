@@ -32,20 +32,24 @@ game only when both said yes.
 
 A new upload is a new revision with a new hash. Its renditions are built and checked
 again, and approvals are **not** carried over: a game approved particular bytes, not a
-name. Until the new revision is published and approved, the game keeps serving the
-previous one.
+name. Publishing the new revision keeps each game on its selected, previously approved
+file. Only that game's approval switches it to the new bytes. Games can update at
+different times; approving a reviewed revision before publication takes effect when
+the curator publishes it.
 
 ## What makes an approval stop counting
 
 | Event | Effect |
 | --- | --- |
 | The curator unpublishes the avatar | It leaves every game's catalogue and its files stop being served, at once |
-| A new revision is published | The previous approvals no longer apply |
-| The creator withdraws the submission | It leaves that game's catalogue |
+| A new revision is published | Existing game releases stay available until each game approves an update |
+| The creator withdraws the selected submission | It leaves that game's catalogue; older approvals do not reappear automatically |
 | The creator's account is deleted | Avatars, renditions, submissions and game links go with it |
 
-A game server re-checks what it has admitted every few minutes, so a withdrawal reaches
-running matches without a restart.
+Registry discovery and new downloads enforce withdrawal immediately. Omoba re-checks
+its catalogue on a new admission when its five-minute cache has expired; it does not
+replace an avatar in an already running match. An outage preserves the last complete
+catalogue. Downloaded bytes cannot be recalled.
 
 ## Where the wallet fits
 
