@@ -1,7 +1,10 @@
 # Ekza Space Docs
 
-Docusaurus documentation project for Ekza Space, the Solana-native ownership
-layer for portable 3D assets, avatars, and virtual spaces.
+Docusaurus documentation and architecture entry point for Ekza Space: portable
+3D assets, Studio, SDKs and applications, with an optional Solana ownership layer.
+
+Start with [repositories and data ownership](docs/core-concepts/ecosystem-map.md)
+and [Studio to OMOBA demo readiness](docs/developers/demo-readiness.md).
 
 ## Commands
 

@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'core-concepts/mission',
         'core-concepts/architecture',
+        'core-concepts/ecosystem-map',
         'core-concepts/asset-lifecycle',
       ],
     },
@@ -16,6 +17,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Developers',
       items: [
+        'developers/demo-readiness',
         'developers/game-integration',
         'developers/rendition-profiles',
         'developers/sdk-overview',
