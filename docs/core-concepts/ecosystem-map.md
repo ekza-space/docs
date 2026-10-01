@@ -38,7 +38,7 @@ whole public flow is deployed. See [demo readiness](../developers/demo-readiness
 | [ekza-mirror](https://github.com/ekza-space/ekza-mirror) | Native iOS AR consumer | Swift models and clients; backend belongs to Registry |
 | [omoba-bevy](https://github.com/o-moba/omoba-bevy) | Desktop/mobile game and authoritative servers | `career-store/migrations/postgres`, `account-api/migrations`, shared game protocol |
 | [omoba-web](https://github.com/o-moba/omoba-web) | Player portal | Omoba Account API contracts |
-| [doc](https://github.com/ekza-space/doc) | Architecture entry point and integration documentation | Links to owning repositories, not duplicate editable SQL |
+| [doc](https://github.com/ekza-space/docs) | Architecture entry point and integration documentation | Links to owning repositories, not duplicate editable SQL |
 
 The optional Solana repositories retain their own on-chain account definitions.
 Free Studio avatar publication does not require a wallet or NFT mint.
