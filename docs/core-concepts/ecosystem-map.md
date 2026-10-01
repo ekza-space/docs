@@ -55,7 +55,7 @@ schemas, not one database per app:
 - `commerce`: commerce records; table availability does not mean payments are live.
 - `public`: existing landing subscriptions/analytics and server RPC entry points.
 - `auth`: Supabase-managed identities and sessions.
-- `storage`: Storage metadata. The new private Studio bucket is empty at rollout.
+- `storage`: Storage metadata. The private Studio bucket now holds pilot originals, generated renditions and reports.
 
 Browse [tables](https://supabase.com/dashboard/project/snrjxwutqxokeujuiepn/editor)
 and [schemas](https://supabase.com/dashboard/project/snrjxwutqxokeujuiepn/database/schemas).
@@ -71,13 +71,22 @@ silently replace an older game-approved rendition.
 Other stores are separate:
 
 - Existing distributed model files use IPFS. New Studio upload/processing still
-  uses Supabase Storage in code; private drafts and IPFS publication need integration.
+  uses Supabase Storage in the live pilot; IPFS publication still needs integration.
 - Space layout files live at `DATA_DIR/rooms/<id>.json` on the realtime host;
   presence is in process memory. These are not Supabase tables.
 - OMOBA career and portal data use their own PostgreSQL connection configured by
   `OMOBA_DATABASE_URL`. This audit did not establish its current production host.
 - The deployed legacy Mirror library uses its own server files/SQLite and must be
   preserved when updating Registry.
+
+## Current runtime placement
+
+Studio web/BFF and Registry API run on existing VPS v357770 (77.246.105.57),
+with canonical Studio at https://registry.ekza.io/studio. The trusted queue worker
+runs on the operator Mac and launches isolated Blender/game-builder containers.
+Supabase owns durable state; the Mac scratch directory is not the database.
+The older Vercel Studio URL redirects to this VPS. See the
+[operator runbook](https://github.com/ekza-space/ekza-registry/blob/main/deploy/hosted-pilot.md).
 
 ## Change and evidence policy
 

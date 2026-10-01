@@ -4,71 +4,71 @@ title: Studio to OMOBA demo readiness
 
 # Studio to OMOBA demo readiness
 
-Status date: **2026-10-01**. Integration into main and a passing build are separate
-from deployment and a successful public avatar demonstration.
+Status: **2026-10-01**. The hosted data/processing/game-admission loop has passed.
+Native visual acceptance is still pending an unlocked operator Mac; no phone
+or public multiplayer capacity claim is made.
 
-## Integrated source baseline
+## Working deployment
 
-| Repository | Integrated revision |
+- **Studio:** https://registry.ekza.io/studio. Vercel's old Studio URL redirects here.
+- API and persistent web BFF run on existing **v357770**, 77.246.105.57, 2 vCPU / 2 GiB. Mirror library, WSS and unrelated services are preserved.
+- PostgreSQL/Auth/private Storage: existing Free Supabase **Ekza-Space**, `snrjxwutqxokeujuiepn`.
+- Processor: operator Mac, real Blender 4.5.14/USDZ and Omoba GLB builder in restricted Docker jobs; Supabase TCP routing through an SSH tunnel avoids the Mac's unreliable VPN path while preserving HTTPS verification.
+- Files in this new pilot use **Supabase Storage**. Paid IPFS remains unchanged and is not yet integrated into Studio publication.
+
+Deployment, rollback, worker controls and capacity:
+[Registry hosted pilot](https://github.com/ekza-space/ekza-registry/blob/main/deploy/hosted-pilot.md).
+
+## Live evidence
+
+Original **EYEWizard**, Polygonal-Mind / 100Avatars R2 / CC0, was uploaded through
+the public authenticated Studio BFF, freshly converted on the Mac, reviewed,
+published, prepared for Omoba and approved by a separate project-owner account.
+Publisher `OpenSourceAvatarsDemo` is a technical pilot account; original author,
+license and source URL remain in attribution.
+
+| Stage | Result |
 | --- | --- |
-| Registry / Studio | `23e16d9` |
-| Rust/Bevy SDK | `cef1d6a` (includes the previous debug LAN fix and existing main licensing) |
-| TypeScript SDK | `41882a7` |
-| Space web (`core`) | `acbc034` |
-| Realtime server | `fe105b2` |
-| Mirror | `dfcf430` |
+| Original VRM upload | 1,888,392 bytes; source SHA `c64c91ecbe86b7be41d54f1765306a23bc5786032af756a917a37511c66ddc9a` |
+| Public Studio avatar | `c99325d8-4c89-4245-b7ff-12cfa756ecb6` |
+| Published revision | `f1be50c6-98ae-453d-933a-add596ac0e43` |
+| Omoba rendition | `cb312c12-7b3c-43e2-a0e0-28ae5363166f`, `desktop / humanoid-glb-v1` |
+| GLB | 2,103,820 bytes; SHA `af5a15879488b1859f1a6a3db4516a241eee49320886961487879d04d2861ba1` |
+| Real Rust SDK cold install | Passed against `https://registry.ekza.io`; size/hash and game profile verified |
+| Actual OMOBA UDP server | Approved avatar admitted; unknown hash rejected |
+| Withdraw approval | Public Omoba catalogue became empty; fresh server rejected the previously approved avatar |
+| Restore approval | Re-submitted and approved; final catalogue restored |
+| Representative larger upload | FireEye, 10,054,644 bytes, accepted as a private draft; not published |
+| Public browser | Catalogue displays the published avatar and supported games |
 
-OMOBA 0.31.1 pins SDK revision `cef1d6ad43e364ad0a116dc7be74122854ee8b7e` for
-client and server. Its existing twenty-model collection is a local integration
-proof; those models have not been published through the hosted Studio.
+The SDK slug is
+`ekza-fb00f73b815e4d6bfa564a694cdefa0b8b68bf53208e0407b06a6d0fe30b4d2a`.
+Source and game binaries: OMOBA `1aa9cbe` (0.31.1), SDK `cef1d6a`.
+The twenty-model local rehearsal is separate; only this one hosted avatar has
+completed publication/game approval in this pilot.
 
-## Public deployment gate
+## Remaining acceptance
 
-- Supabase Ekza-Space has the additive Studio/commerce migrations. Existing public
-  landing data was preserved, and the account/API reference did not change.
-- Studio frontend: https://ekza-studio.vercel.app/studio (HTTP 200).
-- Registry health: HTTP 200; **Studio status, profiles and v2 catalogue: HTTP 404**.
-- Backend host SSH is restored: the operator Mac now routes `vds-eternal` through
-  Wi-Fi instead of the VPN path that closed SSH. No new API/worker deployment has
-  been performed. [Access and capacity report](https://github.com/ekza-space/ekza-registry/blob/main/deploy/ssh-access.md).
-- Custom Studio domain, author signup/email delivery, large VRM upload transport,
-  production Blender/USDZ worker, IPFS publication and real phone acceptance
-  remain pending. Schema initialization does not prove any of those steps.
+1. On the unlocked Mac: native preview, equip and rendered match; check clips, scale, movement, facing and sword attachment. Then check a second rendered client and cached relaunch.
+2. Permanent publisher email/account and public signup/confirmation delivery. Technical `.invalid` demo accounts do not prove email delivery.
+3. iPhone and Android visuals/performance using the current `desktop / humanoid-glb-v1` selector; Mirror USDZ generation alone does not prove ARKit playback.
+4. IPFS publication transport with private draft protection and verified content identity.
+5. Remaining nineteen avatars. Several original R3 VRMs have unaligned GLB JSON chunks and are rejected by current strict upload validation; normalize/re-export with preserved provenance before bulk import. Do not weaken the parser boundary to claim a bulk pass.
+6. Optional VPS beta: deploy one headless Omoba room and measure its load. Post-Studio idle memory available was ~1122 MiB; this is headroom, not a certified player count.
 
-The maintained operational procedure is
-[Registry production rollout](https://github.com/ekza-space/ekza-registry/blob/main/deploy/studio-production.md).
+The operator Mac and Docker must remain awake for queued conversion. Studio and
+already published downloads remain served by the VPS while the Mac is offline.
 
-## First public demonstration, in order
+## Source and automated checks
 
-1. Operator SSH access is restored. Inspect the existing service,
-   persistent volumes and proxy; preserve the legacy Mirror library and WSS.
-2. Deploy the integrated API with backend-only Supabase settings. Configure and
-   test a digest-pinned isolated processor containing the actual Blender/USDZ
-   conversion toolchain. The local rehearsal image is not that production image.
-3. Verify Studio readiness, profiles and a complete v2 catalogue; finish Auth and
-   large-file upload transport. Reuse paid IPFS for published files while retaining
-   private draft handling. Never expose backend credentials to a browser.
-4. Provision Open Source Avatars as publisher, a curator and the `omoba` project
-   owner. Keep original author, source and license separate from publisher identity.
-5. Upload **one original VRM** (pilot: EYEWizard), process and curate it; prepare
-   `omoba / desktop / humanoid-glb-v1` and approve it for the game. This selector
-   is also used by current iOS/Android OMOBA clients.
-6. From a production-configured game, download, preview and equip the approved
-   model; verify size/hash and join a match. A second client must see the same
-   avatar. Check skeleton, animation, scale, attack facing and hand-held equipment.
-7. Check cold download, cached relaunch and withdrawal handling, then repeat for
-   the remaining nineteen avatars and run phone visual/performance acceptance.
+Registry/Studio deployment fixes are maintained in the Registry repository.
+Existing integrated baselines: web SDK `41882a7`, Space `acbc034`, realtime
+`fe105b2`, Mirror `dfcf430`. OMOBA pins SDK main `cef1d6a`.
 
-Detailed creator steps and model provenance:
+Registry backend: 324 passed, 29 optional tests skipped; lint passed. Studio:
+TypeScript and production build passed; 55 tests passed, 3 optional skipped.
+Real Docker processing and the live Rust SDK test are additional integration
+evidence. Native OMOBA client/server built successfully from `1aa9cbe`.
+
+Creator instructions and collection provenance:
 [OMOBA production avatar runbook](https://github.com/o-moba/omoba-bevy/blob/main/docs/ekza-production-avatars.md).
-
-## Verification boundary
-
-Fresh integration checks passed for Registry Python tests/lint, Studio frontend
-TypeScript/tests/build, both SDKs, Space TypeScript/tests/build, realtime Rust
-unit tests and portable Mirror Swift suites. OMOBA passport tests (28) and client/server checks passed against the exact SDK pin. The opt-in Studio tests also passed against the isolated local Supabase Auth and Storage, using test-only conversion output. Seven SQL suites and the populated
-release migration passed in disposable PostgreSQL. The real Docker sandbox probes
-also passed, including the Omoba rendition builder.
-
-Portable Swift checks do not certify ARKit or signed iOS builds. Unit/SQL tests do
-not prove a public upload. No successful live publication or phone match is claimed.
