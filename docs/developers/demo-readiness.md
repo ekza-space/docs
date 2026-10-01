@@ -10,7 +10,7 @@ or public multiplayer capacity claim is made.
 
 ## Working deployment
 
-- **Studio:** https://registry.ekza.io/studio. Vercel's old Studio URL redirects here.
+- **Studio:** https://studio.ekza.io/studio. Vercel's old Studio URL redirects here.
 - API and persistent web BFF run on existing **v357770**, 77.246.105.57, 2 vCPU / 2 GiB. Mirror library, WSS and unrelated services are preserved.
 - PostgreSQL/Auth/private Storage: existing Free Supabase **Ekza-Space**, `snrjxwutqxokeujuiepn`.
 - Processor: operator Mac, real Blender 4.5.14/USDZ and Omoba GLB builder in restricted Docker jobs; Supabase TCP routing through an SSH tunnel avoids the Mac's unreliable VPN path while preserving HTTPS verification.

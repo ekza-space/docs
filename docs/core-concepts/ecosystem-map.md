@@ -82,7 +82,7 @@ Other stores are separate:
 ## Current runtime placement
 
 Studio web/BFF and Registry API run on existing VPS v357770 (77.246.105.57),
-with canonical Studio at https://registry.ekza.io/studio. The trusted queue worker
+with canonical Studio at https://studio.ekza.io/studio. The trusted queue worker
 runs on the operator Mac and launches isolated Blender/game-builder containers.
 Supabase owns durable state; the Mac scratch directory is not the database.
 The older Vercel Studio URL redirects to this VPS. See the
