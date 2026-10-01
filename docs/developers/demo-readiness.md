@@ -5,8 +5,9 @@ title: Studio to OMOBA demo readiness
 # Studio to OMOBA demo readiness
 
 Status: **2026-10-01**. The hosted data/processing/game-admission loop has passed.
-Native visual acceptance is still pending an unlocked operator Mac; no phone
-or public multiplayer capacity claim is made.
+Native desktop preview/download, equip and rendered-match smoke checks have also
+passed. Screenshot review found a T-pose in the preview despite the available idle
+clip; animation polish remains open. No phone or public multiplayer capacity claim is made.
 
 ## Working deployment
 
@@ -40,16 +41,20 @@ license and source URL remain in attribution.
 | Restore approval | Re-submitted and approved; final catalogue restored |
 | Representative larger upload | FireEye, 10,054,644 bytes, accepted as a private draft; not published |
 | Public browser | Catalogue displays the published avatar and supported games |
+| Native desktop, English, 1280 × 720 | Hosted SDK avatar rendered in collection and real local UDP match; Run state, movement 0.508 units, loaded forge-sword attached with zero measured transform error |
 
 The SDK slug is
 `ekza-fb00f73b815e4d6bfa564a694cdefa0b8b68bf53208e0407b06a6d0fe30b4d2a`.
 Source and game binaries: OMOBA `1aa9cbe` (0.31.1), SDK `cef1d6a`.
+The later native capture rebuilt the client at `67a4592` plus the QA-only
+collection-state fix; [capture identity and limitations](https://github.com/o-moba/omoba-bevy/blob/main/docs/progress/2026-10-01-hosted-avatar-smoke.json)
+pin the binary and exact rendition. Clip availability is verified, not full playback quality.
 The twenty-model local rehearsal is separate; only this one hosted avatar has
 completed publication/game approval in this pilot.
 
 ## Remaining acceptance
 
-1. On the unlocked Mac: native preview, equip and rendered match; check clips, scale, movement, facing and sword attachment. Then check a second rendered client and cached relaunch.
+1. Resolve the preview T-pose and inspect every animation, scale and facing in motion. Check a second rendered client and cached relaunch; the single-client desktop smoke already passed.
 2. Permanent publisher email/account and public signup/confirmation delivery. Technical `.invalid` demo accounts do not prove email delivery.
 3. iPhone and Android visuals/performance using the current `desktop / humanoid-glb-v1` selector; Mirror USDZ generation alone does not prove ARKit playback.
 4. IPFS publication transport with private draft protection and verified content identity.
