@@ -28,8 +28,9 @@ proof; those models have not been published through the hosted Studio.
   landing data was preserved, and the account/API reference did not change.
 - Studio frontend: https://ekza-studio.vercel.app/studio (HTTP 200).
 - Registry health: HTTP 200; **Studio status, profiles and v2 catalogue: HTTP 404**.
-- Backend host SSH closes before authentication; no new API/worker deployment
-  was performed during main integration.
+- Backend host SSH is restored: the operator Mac now routes `vds-eternal` through
+  Wi-Fi instead of the VPN path that closed SSH. No new API/worker deployment has
+  been performed. [Access and capacity report](https://github.com/ekza-space/ekza-registry/blob/main/deploy/ssh-access.md).
 - Custom Studio domain, author signup/email delivery, large VRM upload transport,
   production Blender/USDZ worker, IPFS publication and real phone acceptance
   remain pending. Schema initialization does not prove any of those steps.
@@ -39,7 +40,7 @@ The maintained operational procedure is
 
 ## First public demonstration, in order
 
-1. Restore operator access to the Registry host. Inspect the existing service,
+1. Operator SSH access is restored. Inspect the existing service,
    persistent volumes and proxy; preserve the legacy Mirror library and WSS.
 2. Deploy the integrated API with backend-only Supabase settings. Configure and
    test a digest-pinned isolated processor containing the actual Blender/USDZ
