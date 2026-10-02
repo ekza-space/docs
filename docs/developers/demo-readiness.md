@@ -21,7 +21,7 @@ Product flow, immutable identities, profiles and code ownership:
 | Hosted database | Additive `202610010001_typed_assets.sql` applied; migration-file MD5 `9f33391ebf6f89642fbac669a2fe4a92` matches the deployed verification record; 3 existing assets and 1 selected release preserved |
 | Local processor | Restarted against the updated Registry checkout |
 | Rust SDK | Main `927fc0d`, version 0.8.0; 50 tests passed |
-| OMOBA | Tested source `518f982`, version 0.33; includes combat-UI main `b17b73c`; SDK pinned to `927fc0d`; integrated tests and native cold/warm checks passed |
+| OMOBA | Main `5aa2fe4`, version 0.34; hosted asset baseline `518f982` retained; public VPS lobby and editable client server presets verified |
 | Game tests | Integrated gate: 1,265 passed, 4 ignored (826 client, 304 server, 105 shared, 30 passport) |
 | Backend integration checks | Local HTTP: 25 passed, 4 skipped; disposable PostgreSQL: 8 suites passed |
 | New hosted weapon | **Passed:** upload, publication, rejection/retry, exact game approval, revoke/reapproval; revoked public GLB returned 404 |
@@ -35,7 +35,8 @@ a successful deployment do not replace hosted or rendered acceptance.
 
 - **Studio:** https://studio.ekza.io/studio. Vercel's old Studio URL redirects here.
 - API and persistent web BFF run on existing **v357770**, 77.246.105.57, 2 vCPU / 2 GiB. Mirror library, WSS and unrelated services are preserved.
-- PostgreSQL/Auth/private Storage: existing Free Supabase **Ekza-Space**, `snrjxwutqxokeujuiepn`.
+- Studio PostgreSQL/Auth/private Storage: existing Free Supabase **Ekza-Space**, `snrjxwutqxokeujuiepn`.
+- OMOBA beta lobby: `77.246.105.57:4000` UDP on the same VPS, at most two worker rooms on UDP41000–41001. Dedicated game PostgreSQL database `omoba` in the existing local PostgreSQL16 instance; game roles and state are separate from Studio. systemd supervises the lobby/worker group with700MiB memory and150% CPU ceilings.
 - Processor: operator Mac, real Blender 4.5.14/USDZ and Omoba GLB builder in restricted Docker jobs; Supabase TCP routing through an SSH tunnel avoids the Mac's unreliable VPN path while preserving HTTPS verification.
 - Files in this new pilot use **Supabase Storage**. Paid IPFS remains unchanged and is not yet integrated into Studio publication.
 
@@ -78,6 +79,14 @@ its coordinator hands real OS focus between the two windows; it does not disable
 the game’s focus-loss cancellation or fabricate model/animation state. This is
 scripted desktop acceptance, not a manual-input or phone certification.
 
+## Public beta server — 2026-10-02
+
+Fresh0.34 clients default to **77.246.105.57:4000**. Home's server-link button opens the editor: **OMOBA Beta** and **Localhost** prefill the address, which remains manually editable; **Connect** validates, reconnects and saves. Existing custom/local choices remain saved—choose Beta once to move an older installation. Runtime/build overrides remain available; temporary room ports never replace the saved lobby.
+
+A fresh graphical client with no server override completed Home → HeroSelect → Searching → Draft → Loading → InMatch against the real VPS. A separate saved-custom restart verified address priority. Final client tests:829 passed,1 ignored; independent focused verification:44 passed. One English1280×720 desktop UI capture; physical phones remain untested.
+
+[Deployment and rollback](https://github.com/o-moba/omoba-bevy/tree/main/ops/vps) · [Native and two-room evidence](https://github.com/o-moba/omoba-bevy/blob/main/docs/progress/2026-10-02-vps-beta.md).
+
 ## Historical avatar baseline — 2026-10-01
 
 Original **EYEWizard**, Polygonal-Mind / 100Avatars R2 / CC0, was uploaded through
@@ -119,7 +128,7 @@ Permanent [native evidence and screenshots](https://github.com/o-moba/omoba-bevy
 3. iPhone and Android visuals/performance using the current desktop profile selectors; Mirror USDZ generation alone does not prove ARKit playback.
 4. IPFS publication transport with private draft protection and verified content identity. Paid equipment and portable purchase entitlements also remain outside this free-asset rollout.
 5. Remaining nineteen avatars. Several original R3 VRMs have unaligned GLB JSON chunks and are rejected by current strict upload validation; normalize/re-export with preserved provenance before bulk import. Do not weaken the parser boundary to claim a bulk pass.
-6. Optional VPS beta: deploy one headless Omoba room and measure its load. Post-Studio idle memory available was ~1122 MiB; this is headroom, not a certified player count.
+6. Broader VPS capacity testing. Two bot-heavy rooms and third-client capacity waiting passed a30-second external test; p95 snapshot gaps≈88/91ms. Worker RSS≈13MiB each at one observation; this is not a peak/load SLA. Physical players, longer combat and more rooms remain unmeasured.
 
 The operator Mac and Docker must remain awake for queued conversion. Studio and
 already published downloads remain served by the VPS while the Mac is offline.
