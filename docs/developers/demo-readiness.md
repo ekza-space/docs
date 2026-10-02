@@ -4,10 +4,32 @@ title: Studio to OMOBA demo readiness
 
 # Studio to OMOBA demo readiness
 
-Status: **2026-10-01**. The hosted data/processing/game-admission loop has passed.
-Native desktop preview/download, equip and rendered-match smoke checks have also
-passed. Screenshot review found a T-pose in the preview despite the available idle
-clip; animation polish remains open. No phone or public multiplayer capacity claim is made.
+Status: **2026-10-02 — hosted avatar and weapon route verified on desktop**.
+The creator → publication → game-owner approval → OMOBA route passed against the
+real Studio API with two independent native clients and a cached relaunch.
+The integrated source includes the current combat UI. This does not certify
+physical phones or public multiplayer capacity.
+
+Product flow, immutable identities, profiles and code ownership:
+[Avatars and handheld weapons](./typed-assets).
+
+## Current rollout evidence
+
+| Component or acceptance | Status as of this snapshot |
+| --- | --- |
+| Registry/Studio | Application `970c9b6`, deployed |
+| Hosted database | Additive `202610010001_typed_assets.sql` applied; migration-file MD5 `9f33391ebf6f89642fbac669a2fe4a92` matches the deployed verification record; 3 existing assets and 1 selected release preserved |
+| Local processor | Restarted against the updated Registry checkout |
+| Rust SDK | Main `927fc0d`, version 0.8.0; 50 tests passed |
+| OMOBA | Tested source `518f982`, version 0.33; includes combat-UI main `b17b73c`; SDK pinned to `927fc0d`; integrated tests and native cold/warm checks passed |
+| Game tests | Integrated gate: 1,265 passed, 4 ignored (826 client, 304 server, 105 shared, 30 passport) |
+| Backend integration checks | Local HTTP: 25 passed, 4 skipped; disposable PostgreSQL: 8 suites passed |
+| New hosted weapon | **Passed:** upload, publication, rejection/retry, exact game approval, revoke/reapproval; revoked public GLB returned 404 |
+| Two native clients | **Passed:** two empty-cache clients, ordinary weapon picker, animated preview, movement, reciprocal equipped peers; cached relaunch also passed |
+
+The migration checksum records the deployed SQL file. Model content identity uses
+SHA-256 and a byte count, independently of that deployment check. Local tests and
+a successful deployment do not replace hosted or rendered acceptance.
 
 ## Working deployment
 
@@ -20,7 +42,43 @@ clip; animation polish remains open. No phone or public multiplayer capacity cla
 Deployment, rollback, worker controls and capacity:
 [Registry hosted pilot](https://github.com/ekza-space/ekza-registry/blob/main/deploy/hosted-pilot.md).
 
-## Live evidence
+## Current weapon pilot
+
+Forge Hammer is original Open Moba geometry, **CC-BY-4.0** with project credits.
+The publisher is a technical demo account; it does not replace original attribution.
+
+- Asset: `ekza:weapon:38a9903e-b3ec-4b12-a5f8-83516c77ba8b`.
+- Revision: `21f32ab5-6862-4827-97e8-3e983358c33b`.
+- OMOBA rendition: `e650737f-5c06-4928-9635-c5fc63ea1ed3`, `desktop / handheld-glb-v1`.
+- Exact GLB: **26,180 bytes**, SHA-256 `cb7d098f277b3016e6472f85c1f9178368a0eaa52a811c481a9ffc445622f659`.
+- SDK item: `ekza-64a577b6a472c3bacbf809a045c6327d`.
+- Submission: `ff36cea6-921f-48f1-8116-29c8c40f9c0f`, restored to **approved** after negative-path checks.
+
+Before approval and after rejection/revocation it was absent from the game feed;
+a revoked public download returned 404. Approval restored the exact original bytes.
+EYEWizard's existing approved identity and file hash stayed unchanged throughout.
+Technical publication and game review were performed through the ordinary Studio
+UI; the initial upload and repeated negative-path setup used the authenticated
+public Studio API. No database edit granted game approval.
+
+### Try the route
+
+In Studio, upload an Avatar or Weapon with credits, wait for technical publication,
+then use **My uploads → Prepare for the game → Submit**. The OMOBA owner uses
+**Games → Waiting → Inspect the exact 3D file → Approve for the game**.
+
+In OMOBA: **Home → Avatars → Ekza Studio · Library → Refresh**, select the avatar,
+then **Play as this**. Open **Weapons → Refresh**, select the approved weapon and
+wait until it is ready. Return and join a game. Avatar tile selection previews it;
+**Put on card** changes the profile showcase. Weapon tile selection equips it.
+Free approved assets need no wallet. The authoritative server independently checks
+both approvals; two clients download and validate their own files.
+The native check automates ordinary UI buttons and movement commands. On one Mac,
+its coordinator hands real OS focus between the two windows; it does not disable
+the game’s focus-loss cancellation or fabricate model/animation state. This is
+scripted desktop acceptance, not a manual-input or phone certification.
+
+## Historical avatar baseline — 2026-10-01
 
 Original **EYEWizard**, Polygonal-Mind / 100Avatars R2 / CC0, was uploaded through
 the public authenticated Studio BFF, freshly converted on the Mac, reviewed,
@@ -45,19 +103,21 @@ license and source URL remain in attribution.
 
 The SDK slug is
 `ekza-fb00f73b815e4d6bfa564a694cdefa0b8b68bf53208e0407b06a6d0fe30b4d2a`.
-Source and game binaries: OMOBA `1aa9cbe` (0.31.1), SDK `cef1d6a`.
+Historical source and game binaries: OMOBA `1aa9cbe` (0.31.1), SDK `cef1d6a`.
 The later native capture rebuilt the client at `67a4592` plus the QA-only
 collection-state fix; [capture identity and limitations](https://github.com/o-moba/omoba-bevy/blob/main/docs/progress/2026-10-01-hosted-avatar-smoke.json)
 pin the binary and exact rendition. Clip availability is verified, not full playback quality.
 The twenty-model local rehearsal is separate; only this one hosted avatar has
 completed publication/game approval in this pilot.
 
+Permanent [native evidence and screenshots](https://github.com/o-moba/omoba-bevy/tree/main/docs/progress/2026-10-02-asset-lifecycle) record exact source, binary and rendition identities.
+
 ## Remaining acceptance
 
-1. Resolve the preview T-pose and inspect every animation, scale and facing in motion. Check a second rendered client and cached relaunch; the single-client desktop smoke already passed.
+1. Visual polish: Forge Hammer is large but dominates this small avatar's preview. Rebalance a new asset revision's grip scale/proportions and approve that revision explicitly; do not silently replace reviewed bytes. Base geometry can occlude heroes at the closest camera zoom.
 2. Permanent publisher email/account and public signup/confirmation delivery. Technical `.invalid` demo accounts do not prove email delivery.
-3. iPhone and Android visuals/performance using the current `desktop / humanoid-glb-v1` selector; Mirror USDZ generation alone does not prove ARKit playback.
-4. IPFS publication transport with private draft protection and verified content identity.
+3. iPhone and Android visuals/performance using the current desktop profile selectors; Mirror USDZ generation alone does not prove ARKit playback.
+4. IPFS publication transport with private draft protection and verified content identity. Paid equipment and portable purchase entitlements also remain outside this free-asset rollout.
 5. Remaining nineteen avatars. Several original R3 VRMs have unaligned GLB JSON chunks and are rejected by current strict upload validation; normalize/re-export with preserved provenance before bulk import. Do not weaken the parser boundary to claim a bulk pass.
 6. Optional VPS beta: deploy one headless Omoba room and measure its load. Post-Studio idle memory available was ~1122 MiB; this is headroom, not a certified player count.
 
@@ -66,14 +126,15 @@ already published downloads remain served by the VPS while the Mac is offline.
 
 ## Source and automated checks
 
-Registry/Studio deployment fixes are maintained in the Registry repository.
-Existing integrated baselines: web SDK `41882a7`, Space `acbc034`, realtime
-`fe105b2`, Mirror `dfcf430`. OMOBA pins SDK main `cef1d6a`.
+Current typed-route source and checks are pinned in the rollout table above.
+Existing unchanged integration baselines: web SDK `41882a7`, Space `acbc034`,
+realtime `fe105b2`, Mirror `dfcf430`. Their avatar support does not imply handheld
+weapon support.
 
-Registry backend: 324 passed, 29 optional tests skipped; lint passed. Studio:
-TypeScript and production build passed; 55 tests passed, 3 optional skipped.
-Real Docker processing and the live Rust SDK test are additional integration
-evidence. Native OMOBA client/server built successfully from `1aa9cbe`.
+The historical avatar baseline ran 324 backend tests (29 optional skipped),
+backend lint, Studio TypeScript and production build, and 55 Studio tests
+(3 optional skipped). Real Docker processing and a live Rust SDK install were
+additional integration evidence for that baseline.
 
 Creator instructions and collection provenance:
 [OMOBA production avatar runbook](https://github.com/o-moba/omoba-bevy/blob/main/docs/ekza-production-avatars.md).

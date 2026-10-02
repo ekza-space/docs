@@ -19,6 +19,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'developers/demo-readiness',
         'developers/game-integration',
+        'developers/typed-assets',
         'developers/rendition-profiles',
         'developers/sdk-overview',
       ],
