@@ -4,6 +4,11 @@ title: Studio to OMOBA demo readiness
 
 # Studio to OMOBA demo readiness
 
+**2026-10-06 source/rollout update:** lifecycle code is merged across the consumer
+repositories, but the latest Studio/API creator-loop changes have not reached
+the running containers. See [source integration and remaining delivery](./source-integration-status).
+The October 2 evidence below is a historical snapshot.
+
 Status: **2026-10-02 — hosted avatar and weapon route verified on desktop**.
 The creator → publication → game-owner approval → OMOBA route passed against the
 real Studio API with two independent native clients and a cached relaunch.
